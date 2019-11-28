@@ -59,7 +59,11 @@ class Login extends Component {
         }
         this.doLogin = this.doLogin.bind(this)
     }
-
+    // {
+    //   "username": "nohahamdy",
+    //   "password": "k73iyDje7AMaVBe",
+    //   "request_token": "03262f29490e40d26af351113227fc53239f571e"
+    // }
     componentDidMount() {
         BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
         this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);

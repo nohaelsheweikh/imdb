@@ -17,24 +17,10 @@ class Root extends Component {
           };
     }
 
-    componentDidMount() {
-        // setTimeout(() => {
-        //     this.props.actions.restoreSession();
-        // }, 2000);
-        
+    componentDidMount() { 
         this.props.actions.restoreSession()
         .then(res => this.setState({ signedIn: this.props.state.isAuth, checkedSignIn: true }))
-        .catch(err => alert("An error occurred"));
-
-        // _bootstrapAsync = () => {
-        //     this.props.actions.restoreSession().then(() => {
-        //         this.props.navigation.navigate(this.props.state.isAuth !== null ? 'MainStack' : 'LoginStack');
-        //     })
-        //         .catch(error => {
-        //             this.setState({ error })
-        //         })
-    
-        // };
+        .catch(err => alert("An error occurred"));    
     }
 
     render() {
@@ -44,9 +30,6 @@ class Root extends Component {
         }
 
         if (this.props.state.isAuth) {
-            
-                // let routes = this.props.navigation.state.routes;
-                // console.log('route',routes)
             
             return <MainStack navigation={this.props.navigation} />;
         } else {
