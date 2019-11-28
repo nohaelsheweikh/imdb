@@ -1,0 +1,6 @@
+framework module RNCharts {
+  umbrella header "RNCharts-umbrella.h"
+
+  export *
+  module * { export * }
+}
