@@ -14,7 +14,6 @@ import com.github.yamill.orientation.OrientationPackage;
 
 import com.horcrux.svg.SvgPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
-// import com.google.firebase.perf.FirebasePerformance;
 
 
 import com.horcrux.svg.SvgPackage;

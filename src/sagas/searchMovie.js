@@ -15,9 +15,8 @@ export function* searchMovie(action) {
   console.log('sent',action.query)
     try {
       yield put(IsLoading(true));
-      let response  =  yield call(fetch, `https://api.themoviedb.org/3/search/multi?api_key=75ec91e5d32ec957320eaa24e91f58a8&language=en-US&query=${action.query}&page=1&include_adult=false`,
+      let response  =  yield call(fetch, `${ApiUtils.serverUrl}search/multi?api_key=${ApiUtils.APIKEY}&language=en-US&query=${action.query}&page=1&include_adult=false`,
         
-      // let res  =  yield call(fetch, 'http://system.hoodeg.com/userapi/notifications/'+action.page+'/',
         simpleGetHeaders())
         let json =  yield response.json();
       console.log('searchResponse',json)

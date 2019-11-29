@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View} from 'react-native';
-import '../styles/search.js';
 import { SearchBar, Button,Icon,Divider} from 'react-native-elements';
+import Styles, { COLOR } from "../config/styles";
 
 export default class Search extends Component {
     render(){
@@ -11,10 +11,11 @@ export default class Search extends Component {
                     placeholder="Type Here..."
                     onChangeText={this.props.update.bind(this)}
                     value={this.props.value}
+                    showLoading={this.props.isLoading}
                 />  
                 <View style={{alignItems:'center',top:5}}>
                     <Button
-                        buttonStyle={{width:150}}
+                        buttonStyle={{width:150,backgroundColor:COLOR.SECONDARY}}
                         icon={
                             <Icon
                             name="search"

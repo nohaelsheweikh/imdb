@@ -17,7 +17,7 @@ import {
 
         <View style={styles.container}>
           <Image style={styles.logo}
-            source={require('../assets/images/logo-V.png')}/>
+            source={require('../assets/images/logo.png')}/>
           <Text style={styles.logoText}> </Text>
         </View>
 
@@ -35,11 +35,10 @@ import {
     container: {
       flex:1,
       marginTop:20,
-      backgroundColor:'#13161d',
       justifyContent:'center',
-      alignItems: 'center'
+      alignItems: 'center',
     },
-    logo:{width: screenSize.width+scaleModerate(50, 1), height:200}
+    logo:{width: screenSize.width+scaleModerate(50, 1), height:screenSize.height+scaleModerate(50, 1)}
   },
   //Media Queries styles:
   {
@@ -49,9 +48,9 @@ import {
              backgroundColor:'#13161d',
              justifyContent:'center',
              alignItems: 'center',
-             marginTop:20
+             marginTop:30
             },
-          logo:{width: screenSize.width+scaleModerate(50, 1), height:150}
+          logo:{width: screenSize.width+scaleModerate(50, 1), height:220}
       }
   },
 

@@ -1,4 +1,7 @@
 import * as ActionTypes from '../constants/ActionTypes'
+import {  
+    LOGOUT_SUCCESS,
+  } from "../config/redux-action-types/authenticate"
 const INITIAL_STATE = {
     isLoading: false, 
     Movies:[]
@@ -20,7 +23,10 @@ export default (state = INITIAL_STATE, action) => {
             case ActionTypes.SEARCH_MOVIE_SUCCESS:
             return { ...state,Movies:action.payload.results};
 
-            
+            case LOGOUT_SUCCESS:
+                return  Object.assign({}, state, {
+                    Movies:[]
+                 });
         
         default:
             return state

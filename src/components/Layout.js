@@ -1,7 +1,6 @@
 import React , { Component } from 'react';
 import { View, ScrollView} from 'react-native';
 
-import Footer from './Footer'
 
 
 const Layout = (props) => {
@@ -11,7 +10,6 @@ const Layout = (props) => {
       <View style={styles.content}>
         {props.children}
       </View>
-      {/* <Footer active={global.active} style={styles.bottom}/> */}
     </View>
   );
 };

@@ -7,6 +7,8 @@ import {
   Text,
   TexInput,
 } from 'react-native';
+import Styles, { COLOR } from "../../config/styles";
+
 import { Layout } from '../../components';
 import Loader from '../../components/Loader';
 import { scaleModerate, scaleVertical,scale } from '../../utils/scale';
@@ -19,7 +21,8 @@ import styles from '../../styles/healthReport'
 import { Button,Icon,ListItem,Card,Image,Divider} from 'react-native-elements';
 
 
- 
+const { width,height } = Dimensions.get('window');
+
 
 export default class MoviesList extends React.PureComponent {  
 
@@ -40,7 +43,7 @@ componentWillReceiveProps(nextProps) {
 
   render = () => {   
       return (
-      <View>
+      <View style={{height:height+scaleVertical(50, 1)}}>
         
        <ScrollView >
         {this.props.isLoading?     
@@ -68,11 +71,12 @@ componentWillReceiveProps(nextProps) {
               <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
                 <Button
                   type="clear"
+                  titleStyle={{color:COLOR.SECONDARY}}
                   icon={
                     <Icon
                       name="share"
                       size={15}
-                      color="green"
+                      color={COLOR.SECONDARY}
                     />
             }
             onPress={this.props.share.bind(this,movie.title,"https://image.tmdb.org/t/p/w500/"+movie.backdrop_path)}
@@ -81,11 +85,13 @@ componentWillReceiveProps(nextProps) {
           
           <Button
              type="clear"
+             titleStyle={{color:COLOR.SECONDARY}}
+
               icon={
                 <Icon
                   name="star"
                   size={15}
-                  color="green"
+                  color={COLOR.SECONDARY}
                 />
                
 

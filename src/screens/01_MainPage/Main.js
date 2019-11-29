@@ -31,12 +31,13 @@ import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
 import ErrorModal from '../../components/ErrorModal'
 
-
+import{logout} from '../../actions/authenticate'
 import BackgroundColor from 'react-native-background-color';
 import { withNavigationFocus } from "react-navigation";
 import {searchMovie} from '../../actions/searchMovie';
 import Share from 'react-native-share';
 import Search from '../../components/search'
+import { Button ,Icon} from 'react-native-elements';
 
 const screenSize = Dimensions.get('window');
 const { width,height } = Dimensions.get('window');
@@ -58,7 +59,20 @@ const chartBackgroundStyle = { backgroundColor: "#FFFFFF"};
       backgroundColor: '#13161d',
     },
     headerTintColor: '#FFFFFF',
-    headerRight:null,
+    headerRight: (
+      <TouchableOpacity 
+        style={{marginRight:10}}
+        onPress={() => params._logout()}
+        >
+        <View style={{flexDirection:'row'}}>
+        <Text style={{color:'#FFFFFF'}}>Logout</Text>   
+        <Icon 
+          name="arrow-back"
+          size={15}
+          color="white"/> 
+           
+        </View>
+      </TouchableOpacity>),
     headerLeft:null
     
    
@@ -103,7 +117,7 @@ const chartBackgroundStyle = { backgroundColor: "#FFFFFF"};
   }
 
 componentDidMount() {
-  this.props.navigation.setParams({ _setModal: this.setModalVisible });
+  this.props.navigation.setParams({ _logout: this.props.logout });
   // this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
   Orientation.lockToPortrait();
   BackgroundColor.setColor('#EAE9EE');
@@ -118,12 +132,14 @@ componentDidMount() {
       const { search } = this.state;
       
       return (
-        <View>
+        <Layout>
            <Search
             update={this.updateSearch}
             value={search}
             change={this.Search}
-        />   
+            isLoading={this.props.isLoading}
+        />     
+          <View style={{height:10}}/>
           <MoviesList
           onChange={this.Search}
           isLoading={this.props.isLoading}
@@ -133,8 +149,7 @@ componentDidMount() {
           share={this.share}
 
           />
-          
-        </View>
+        </Layout>
       );
 }}
 
@@ -149,6 +164,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
       searchMovie:(query) => dispatch(searchMovie(query)),
+      logout:()=> dispatch(logout())
   };
 };
 

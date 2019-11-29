@@ -14,54 +14,40 @@ import {
   RESTORE_FAILED
 } from "../config/redux-action-types/authenticate";
 
-// export const getToken = (token) => ({
-//   type: 'GET_TOKEN',
-//   token,
-// });
 
-export function login(email, password) { // Fake authentication function
+
+export function login() {
   return async dispatch => {
-    dispatch(loginRequest()); // dispatch a login request to update the state
+    dispatch(loginRequest()); 
     try { 
-       
-          if(!email || !password){
-            dispatch(loginHasError(true));
-            dispatch(loginIsLoading(false));
-            return;
-        }
+     
+      fetch('https://api.themoviedb.org/3/authentication/token/new?api_key=75ec91e5d32ec957320eaa24e91f58a8', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+    })
+        .then((res) => res.json())
+        .then(res => {
+            console.log(res); 
+            if(res.success){
+              let token = res.request_token
+              console.log('request_token',res.request_token)
+              const session = { token:token} 
+              AsyncStorage.setItem(DATA_SESSION, JSON.stringify(session)) 
+              AsyncStorage.setItem('token', token); 
+               dispatch(loginSuccess(session)) 
 
-        fetch('http://54.187.118.82/userapi/authenticate/login', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({email: email, password: password})
-        })
-            .then((res) => res.json())
-            .then(res => {
-                console.log(res);
-                if(res.code==200){
-                    let token = res.result.token
-                    let userId = res.result.user_id
-                    let email =res.result.email   
-                
-                    const session = { token:token, email: email} 
-                    AsyncStorage.setItem(DATA_SESSION, JSON.stringify(session)) 
-                    AsyncStorage.setItem('token', token); 
-                    // AsyncStorage.setItem('token', token); 
-                    dispatch(loginSuccess(session)) 
-                    // global.active = 'Main'
-                }else{
-                  dispatch(loginFailed("Something went wrong"));
-                }
+            }         
             })
     } catch (err) { // When something goes wrong
       console.log(err)
       dispatch(loginFailed("Something went wrong"));
     }
   };
-} // login
+} 
+// login
 export function restoreSession() { // Restore session of the user who is authenticated
   return async dispatch => {
     dispatch(restoreRequest()); // Dispatch an restore request session
@@ -78,28 +64,14 @@ export function restoreSession() { // Restore session of the user who is authent
   };
 } 
 
- // restoreSession
 
-// export const getUserToken = () => dispatch => 
-
-//  AsyncStorage.getItem(DATA_SESSION)
-//         .then((data) => {
-//             dispatch(loading(false));
-//             dispatch(getToken(data));
-//         })
-//         .catch((err) => {
-//             dispatch(loading(false));
-//             dispatch(error(err.message || 'ERROR'));
-//         })
 
 export const logout =() =>{ 
   return async dispatch => {
     dispatch(logoutRequest()) // Dispatch a logout request
     try {
-      //setTimeout(async () => { // Add a 1.5 second delay to fake an asynchronous ajax request
         await AsyncStorage.removeItem(DATA_SESSION); // Remove the session data and unauthenticate the user
         dispatch(logoutSuccess()) // Dispatch a logout success action
-    //}, 1500)
     } catch (err) { // When something goes wrong
       dispatch(logoutFailed("Something went wrong"))
     }
