@@ -1,12 +1,2 @@
-export * from './avatar';
-export * from './charts';
-export * from './socialBar';
-export * from './switch/index';
-export * from './ellipsis';
-export * from './gallery';
-export * from './socialSetting';
-export * from './progressBar';
-export * from './paginationIndicator';
-export * from './passwordTextInput';
-export * from './cardInput';
+
 export * from './Layout';

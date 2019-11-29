@@ -38,6 +38,10 @@ target 'imdbNohaElsheweikh' do
 
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
+
+
+  pod 'RNShare', :path => '../node_modules/react-native-share'
+
 end
 
 swift4 = ['Charts']

@@ -79,6 +79,7 @@
 		DE6F980ADF5E4E87A2B3EF03 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC0E53B3B15142EAB12E39A0 /* Octicons.ttf */; };
 		DF638ABD57C04167BC1BC43E /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D67CD4839FA44211BA82CB02 /* Zocial.ttf */; };
 		F93128436A884DCE89241C43 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2547C10D052747D08BC0A4FD /* libRNImagePicker.a */; };
+		01BEB3EEE8D140358701521B /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2204878E9D1462BA95AEEED /* Fontisto.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -549,6 +550,7 @@
 		CC0E53B3B15142EAB12E39A0 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		CE9E7434693D45FFADFD48F6 /* libRNSentry.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSentry.a; sourceTree = "<group>"; };
 		D67CD4839FA44211BA82CB02 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		F2204878E9D1462BA95AEEED /* Fontisto.ttf */ = {isa = PBXFileReference; name = "Fontisto.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -814,6 +816,7 @@
 				CC0E53B3B15142EAB12E39A0 /* Octicons.ttf */,
 				74E4328952154B57A85F335B /* SimpleLineIcons.ttf */,
 				D67CD4839FA44211BA82CB02 /* Zocial.ttf */,
+				F2204878E9D1462BA95AEEED /* Fontisto.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1614,6 +1617,7 @@
 				DE6F980ADF5E4E87A2B3EF03 /* Octicons.ttf in Resources */,
 				96312C9B41E44C6F91A2CD0E /* SimpleLineIcons.ttf in Resources */,
 				DF638ABD57C04167BC1BC43E /* Zocial.ttf in Resources */,
+				01BEB3EEE8D140358701521B /* Fontisto.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

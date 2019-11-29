@@ -37,7 +37,6 @@ import LoginActions from '../../actions/Login';
 import { scaleModerate, scaleVertical } from '../../utils/scale';
 import { Actions } from 'react-native-router-flux';
 import styles from '../../styles/trips'
-import { VictoryChart,VictoryTheme,VictoryBar, VictoryGroup, VictoryStack,VictoryLabel } from "victory-native";
 import ErrorModal from '../../components/ErrorModal'
 import Orientation from 'react-native-orientation';
 import { scale } from '../../utils/scale';

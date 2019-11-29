@@ -3,19 +3,9 @@ import { connect} from 'react-redux';
 import {
   View,
   ScrollView,
-  FlatList,
-  TouchableOpacity,
-  TouchableHighlight,
   Dimensions,
-  Modal,
   Text,
-  TextInput,
-  Alert,
-  Platform,
-  BackHandler,
-  RefreshControl,
-  processColor,
-  AsyncStorage,
+  TexInput,
 } from 'react-native';
 import { Layout } from '../../components';
 import Loader from '../../components/Loader';
@@ -26,7 +16,7 @@ import BackgroundColor from 'react-native-background-color';
 import { withNavigationFocus } from "react-navigation";
 // import styles from '../../styles/profile'
 import styles from '../../styles/healthReport'
-import { SearchBar, Button,Icon,ListItem,Card,Image} from 'react-native-elements';
+import { Button,Icon,ListItem,Card,Image,Divider} from 'react-native-elements';
 
 
  
@@ -51,50 +41,65 @@ componentWillReceiveProps(nextProps) {
   render = () => {   
       return (
       <View>
-        <SearchBar
-          placeholder="Type Here..."
-          onChangeText={this.props.updateSearch.bind(this)}
-          value={this.props.search}
-        />
-        <View style={{alignItems:'center',top:5,width:'100%'}}>
-          <Button
-            icon={
-              <Icon
-                name="search"
-                size={15}
-                color="white"
-              />
-            }
-            onPress={this.props.onChange.bind(this)}
-            iconRight
-            title="search"
-          />
-      </View>
-
+        
        <ScrollView >
         {this.props.isLoading?     
             <Loader loading={true} />
             :null
         }
         {
-          this.state.movies.map((u, i) => {
+          this.state.movies.map((movie, i) => {
             return (
-           <Card title={u.name}>
-                <View key={i} >
+           <Card title={movie.title} key={i}>
+             <View>
+                <View style={{alignItems:'center'}}  >
                   <Image
                     resizeMode="cover"
-                    source={{ uri:"https://image.tmdb.org/t/p/w500/"+u.logo_path }}
-                    style={{ width: 300, height: 200 }}
+                    source={{ uri:"https://image.tmdb.org/t/p/w500/"+movie.backdrop_path }}
+                    style={{ width: 200, height: 150 }}
                   />
-                  <Text >{u.name}</Text>
+                  </View>
+                  <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+                    <Text >Release :{movie.release_date}</Text>
+                    <Text> Rating {movie.vote_average}</Text>
+                  </View>  
                 </View>
+                <Divider  />
+              <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+                <Button
+                  type="clear"
+                  icon={
+                    <Icon
+                      name="share"
+                      size={15}
+                      color="green"
+                    />
+            }
+            onPress={this.props.share.bind(this,movie.title,"https://image.tmdb.org/t/p/w500/"+movie.backdrop_path)}
+            title="Share"
+          />
+          
+          <Button
+             type="clear"
+              icon={
+                <Icon
+                  name="star"
+                  size={15}
+                  color="green"
+                />
+               
+
+              }
+              title="Favorite"
+            />
+          </View>
+          
             </Card>
               );
             })
         }
      
       </ScrollView>
-      <View style={{height:50}}></View>
     </View>
       );
 }}

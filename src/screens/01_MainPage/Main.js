@@ -35,6 +35,8 @@ import ErrorModal from '../../components/ErrorModal'
 import BackgroundColor from 'react-native-background-color';
 import { withNavigationFocus } from "react-navigation";
 import {searchMovie} from '../../actions/searchMovie';
+import Share from 'react-native-share';
+import Search from '../../components/search'
 
 const screenSize = Dimensions.get('window');
 const { width,height } = Dimensions.get('window');
@@ -73,6 +75,22 @@ const chartBackgroundStyle = { backgroundColor: "#FFFFFF"};
  
 
 
+  share=(title,url)=>{
+    const shareOptions = {
+      title: title,
+      message: title,
+      url: url,
+      social: Share.Social.WHATSAPP,
+      whatsAppNumber: "9199999999", 
+      email: 'email@example.com',
+      social: Share.Social.EMAIL, 
+      filename: 'test' ,  
+      
+  };
+  console.log(title,url)
+  Share.open(shareOptions);
+
+  }
   
   updateSearch = search => {
     this.setState({ search });
@@ -101,12 +119,18 @@ componentDidMount() {
       
       return (
         <View>
+           <Search
+            update={this.updateSearch}
+            value={search}
+            change={this.Search}
+        />   
           <MoviesList
           onChange={this.Search}
           isLoading={this.props.isLoading}
           MoviesList={this.props.moviesList}
           search={search}
           updateSearch={this.updateSearch}
+          share={this.share}
 
           />
           
