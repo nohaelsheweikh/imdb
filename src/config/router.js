@@ -8,7 +8,7 @@ import {
 
 import Login from "../screens/00_LoginPage/login";
 import HomeScreen from "../screens/01_MainPage/Main";
-import FavoritesScreen from "../screens/02_FavoritesPage/TripsList"
+import FavoritesScreen from "../screens/02_FavoritesPage/FavoritesList"
 
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -37,11 +37,11 @@ export const MainStack =
           headerBackTitle: 'A much too long text for back button from B to A',
           tabBarVisible: true,
           tabBarOptions: {
-            activeTintColor: '#b3d137',
+            activeTintColor: COLOR.SECONDARY,
             inactiveTintColor: '#FFFFFF',
             showIcon: true,
             style: {
-                backgroundColor: '#13161d',
+                backgroundColor: COLOR.PRIMARY,
                 position: 'absolute',
                 left: 0,
                 right: 0,
@@ -55,11 +55,11 @@ export const MainStack =
           title: 'Favorites',
           tabBarVisible: true,
           tabBarOptions: {
-            activeTintColor: '#b3d137',
+            activeTintColor: COLOR.SECONDARY,
             inactiveTintColor: '#FFFFFF',
             showIcon: true,
             style: {
-                backgroundColor: '#13161d',
+                backgroundColor: COLOR.PRIMARY,
                 position: 'absolute',
                 left: 0,
                 right: 0,
@@ -79,10 +79,10 @@ HomeStack.navigationOptions = ({ navigation }) => {
   return {
     tabBarLabel: "Home",
      
-    tabBarBackgroundColor:  '#13161d',
+    tabBarBackgroundColor: COLOR.PRIMARY,
        
     tabBarIcon: ({ focused, tintColor }) => (
-         <Icon name="home" size={27} color={focused ? '#b3d137' : '#FFFFFF'} />
+         <Icon name="home" size={27} color={focused ? COLOR.SECONDARY: '#FFFFFF'} />
     )
 
   };
@@ -93,10 +93,10 @@ HomeStack.navigationOptions = ({ navigation }) => {
   return {
     tabBarLabel: "Favorites",
     style:{
-      backgroundColor: '#13161d',
+      backgroundColor: COLOR.PRIMARY,
      },
     tabBarIcon: ({ focused, tintColor }) => (
-         <Icon name="star" size={27} color={focused ? '#b3d137' : '#FFFFFF'} />
+         <Icon name="star" size={27} color={focused ? COLOR.SECONDARY : '#FFFFFF'} />
     )
   };
   };  

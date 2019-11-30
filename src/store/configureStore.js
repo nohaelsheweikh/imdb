@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import * as ActionTypes from '../constants/ActionTypes';
+import * as ActionTypes from '../config/redux-action-types/searchMovies';
 import { createLogger } from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 import reducers from './../reducers';

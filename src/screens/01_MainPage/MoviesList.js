@@ -8,16 +8,12 @@ import {
   TexInput,
 } from 'react-native';
 import Styles, { COLOR } from "../../config/styles";
-
-import { Layout } from '../../components';
 import Loader from '../../components/Loader';
 import { scaleModerate, scaleVertical,scale } from '../../utils/scale';
 import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
 import BackgroundColor from 'react-native-background-color';
 import { withNavigationFocus } from "react-navigation";
-// import styles from '../../styles/profile'
-import styles from '../../styles/healthReport'
 import { Button,Icon,ListItem,Card,Image,Divider} from 'react-native-elements';
 
 

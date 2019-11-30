@@ -17,20 +17,15 @@ import {
   RefreshControl,
   processColor,
   AsyncStorage,
-
+  StatusBar
 } from 'react-native';
-
 // import AsyncStorage from '@react-native-community/async-storage';
 import { Layout } from '../../components';
 import Loader from '../../components/Loader';
 import MoviesList from './MoviesList'
-
-import LoginActions from '../../actions/Login';
 import { scaleModerate, scaleVertical,scale } from '../../utils/scale';
 import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
-import ErrorModal from '../../components/ErrorModal'
-
 import{logout} from '../../actions/authenticate'
 import BackgroundColor from 'react-native-background-color';
 import { withNavigationFocus } from "react-navigation";

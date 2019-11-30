@@ -8,8 +8,7 @@ import * as authActions from "../../actions/authenticate";
 import { connect } from "react-redux";
 import styles from '../../styles/login'
 import Logo from '../../components/Logo'
-
-  import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 class Login extends Component {
     static navigationOptions = ({ navigation }) => ({

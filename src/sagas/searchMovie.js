@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import * as ActionTypes  from "../constants/ActionTypes";
+import * as ActionTypes  from "../config/redux-action-types/searchMovies";
 import ApiUtils,{simpleGetHeaders,APIKEY} from '../utils/ApiUtils'
 
 export const IsLoading = (bool) => {

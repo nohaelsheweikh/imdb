@@ -24,7 +24,6 @@ import {AsyncStorage } from "react-native";
             return {
               method: 'GET',
               headers: {
-              // 'Authorization':"Bearer "+token,
               "Access-Control-Allow-Origin": "*",
               'Content-Type': 'application/json',
               'Cache-Control': 'no-cache, no-store, must-revalidate',
@@ -34,20 +33,7 @@ import {AsyncStorage } from "react-native";
           
           };
 
-          export const NotificationsGetHeaders = (token)=> {    
-            return {
-              method: 'GET',
-              headers: {
-              'Authorization':"Token "+token,
-              "Access-Control-Allow-Origin": "*",
-              'Content-Type': 'application/json',
-              'Cache-Control': 'no-cache, no-store, must-revalidate',
-              'Pragma': 'no-cache',
-              'Expires': 0
-              },
-            };
-          
-          };
+         
 
           export const simpleGetHeaders = ()=> {    
             return {

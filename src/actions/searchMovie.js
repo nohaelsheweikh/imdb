@@ -1,4 +1,4 @@
-import * as ActionTypes from '../constants/ActionTypes';
+import * as ActionTypes from '../config/redux-action-types/searchMovies';
 
 export function searchMovie(query){
     return{

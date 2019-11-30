@@ -1,4 +1,4 @@
-import * as ActionTypes from '../constants/ActionTypes'
+import * as ActionTypes from '../config/redux-action-types/searchMovies'
 import {  
     LOGOUT_SUCCESS,
   } from "../config/redux-action-types/authenticate"

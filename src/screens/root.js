@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { MainStack, LoginStack,AppNavigator } from "../config/router";
-import Splash from "./splash";
 import { bindActionCreators } from "redux";
 import * as authActions from "../actions/authenticate";
 import { connect } from "react-redux";
