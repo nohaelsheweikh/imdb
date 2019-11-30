@@ -3,7 +3,7 @@ import { View,Text} from 'react-native';
 import { Button,Icon,ListItem,Card,Image,Divider} from 'react-native-elements';
 import Styles, { COLOR } from "../config/styles";
 
-export default class Search extends Component {
+export default class MovieCard extends Component {
     render(){
         return (
             <Card title={this.props.title}>
@@ -49,6 +49,7 @@ export default class Search extends Component {
                             color={COLOR.SECONDARY}
                             />
                         }
+                        onPress={this.props.addToFavorites.bind(this)}
                         title="Favorite"
                     />
                 </View>

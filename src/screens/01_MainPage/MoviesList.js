@@ -36,31 +36,29 @@ export default class MoviesList extends React.PureComponent {
 
   render = () => {   
       return (
-      <View style={{height:height+scaleVertical(50, 1)}}>
+      <View style={{height:height+scaleVertical(50, 1)}}>   
+        <ScrollView >
+          {this.props.isLoading?     
+              <Loader loading={true} />
+              :null
+          }
         
-       <ScrollView >
-        {this.props.isLoading?     
-            <Loader loading={true} />
-            :null
-        }
-        {
-        this.state.movies.map((movie, i) => {
-            return (
-                <MoviesCard
-                  title={movie.title} key={i}
-                  source={{ uri:"https://image.tmdb.org/t/p/w500/"+movie.backdrop_path }}
-                  releaseDate={movie.release_date}
-                  rating={movie.vote_average}
-                  share={this.props.share.bind(this,movie.title,"https://image.tmdb.org/t/p/w500/"+movie.backdrop_path)}
-
-                
-                />
-              );
-            })
-        }
+          {this.state.movies.map((movie, i) => {
+              return (
+                  <MoviesCard
+                    title={movie.title} key={i}
+                    source={{ uri:"https://image.tmdb.org/t/p/w500/"+movie.backdrop_path }}
+                    releaseDate={movie.release_date}
+                    rating={movie.vote_average}
+                    share={this.props.share.bind(this,movie.title,"https://image.tmdb.org/t/p/w500/"+movie.backdrop_path)} 
+                    addToFavorites={this.props.addToFavorites.bind(this,movie)}
+                  />
+                );
+              })
+          }
      
-      </ScrollView>
-    </View>
+        </ScrollView>
+      </View>
       );
 }}
 

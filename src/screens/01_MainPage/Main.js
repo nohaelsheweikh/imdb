@@ -2,22 +2,10 @@ import React from 'react';
 import { connect} from 'react-redux';
 import {
   View,
-  ScrollView,
-  FlatList,
   TouchableOpacity,
-  TouchableHighlight,
   Dimensions,
-  Modal,
   Text,
-  TextInput,
-  Alert,
-  Platform,
-  Image,
   BackHandler,
-  RefreshControl,
-  processColor,
-  AsyncStorage,
-  StatusBar
 } from 'react-native';
 // import AsyncStorage from '@react-native-community/async-storage';
 import { Layout } from '../../components';
@@ -30,6 +18,7 @@ import{logout} from '../../actions/authenticate'
 import BackgroundColor from 'react-native-background-color';
 import { withNavigationFocus } from "react-navigation";
 import {searchMovie} from '../../actions/searchMovie';
+import {addToFavorites} from '../../actions/addToFavorites'
 import Share from 'react-native-share';
 import Search from '../../components/search'
 import { Button ,Icon} from 'react-native-elements';
@@ -96,19 +85,21 @@ const chartBackgroundStyle = { backgroundColor: "#FFFFFF"};
       filename: 'test' ,  
       
   };
-  console.log(title,url)
   Share.open(shareOptions);
 
   }
   
   updateSearch = search => {
     this.setState({ search });
-    console.log('search',this.state.search)
   };
 
 
-  Search=()=>{
+  Search = () => {
     this.props.searchMovie(this.state.search)
+  }
+  addToFavorites = (movie) => {
+    this.props.addToFavorites(movie)
+
   }
 
 componentDidMount() {
@@ -129,21 +120,22 @@ componentDidMount() {
       return (
         <Layout>
            <Search
-            update={this.updateSearch}
-            value={search}
-            change={this.Search}
-            isLoading={this.props.isLoading}
-        />     
-          <View style={{height:10}}/>
-          <MoviesList
-          onChange={this.Search}
-          isLoading={this.props.isLoading}
-          MoviesList={this.props.moviesList}
-          search={search}
-          updateSearch={this.updateSearch}
-          share={this.share}
+              update={this.updateSearch}
+              value={search}
+              change={this.Search}
+              isLoading={this.props.isLoading}
+           />     
+           <View style={{height:10}}/>
+            <MoviesList
+              onChange={this.Search}
+              isLoading={this.props.isLoading}
+              MoviesList={this.props.moviesList}
+              search={search}
+              updateSearch={this.updateSearch}
+              share={this.share}
+              addToFavorites={this.addToFavorites}
 
-          />
+            />
         </Layout>
       );
 }}
@@ -159,7 +151,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
       searchMovie:(query) => dispatch(searchMovie(query)),
-      logout:()=> dispatch(logout())
+      logout:() => dispatch(logout()),
+      addToFavorites:(movie) => dispatch(addToFavorites(movie))
   };
 };
 

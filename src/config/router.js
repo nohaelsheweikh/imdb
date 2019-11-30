@@ -8,7 +8,7 @@ import {
 
 import Login from "../screens/00_LoginPage/login";
 import HomeScreen from "../screens/01_MainPage/Main";
-import FavoritesScreen from "../screens/02_FavoritesPage/FavoritesList"
+import FavoritesScreen from "../screens/02_FavoritesPage/Favorite"
 
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'

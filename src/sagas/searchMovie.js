@@ -9,28 +9,23 @@ export const IsLoading = (bool) => {
     }
 };
 
-
-
 export function* searchMovie(action) {
-  console.log('sent',action.query)
+ 
     try {
       yield put(IsLoading(true));
-      let response  =  yield call(fetch, `${ApiUtils.serverUrl}search/multi?api_key=${ApiUtils.APIKEY}&language=en-US&query=${action.query}&page=1&include_adult=false`,
-        
+      let response  =  yield call(fetch, `${ApiUtils.serverUrl}search/multi?api_key=${ApiUtils.APIKEY}&language=en-US&query=${action.query}&page=1&include_adult=false`,   
         simpleGetHeaders())
         let json =  yield response.json();
-      console.log('searchResponse',json)
+        console.log('searchResponse',json)
       if(response.status === 200){
         yield put({ type:ActionTypes.SEARCH_MOVIE_SUCCESS,
                     payload:json
-              });         
-              yield put(IsLoading(false));
-     
+         });         
+           yield put(IsLoading(false)); 
         }
         }catch (e) {
-      yield put({ type:ActionTypes.SEARCH_MOVIE_HAS_ERROR, error: e.message });
-      yield put(IsLoading(true));
-
+        yield put({ type:ActionTypes.SEARCH_MOVIE_HAS_ERROR, error: e.message });
+        yield put(IsLoading(true));
     }
   }
 

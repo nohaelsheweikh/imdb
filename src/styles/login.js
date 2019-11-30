@@ -1,14 +1,7 @@
 import { MediaQuery, MediaQueryStyleSheet } from "react-native-responsive";
 import {StyleSheet} from "react-native";
 import { scaleModerate, scaleVertical } from '../utils/scale';
-import {
-  RkButton,
-  RkText,
-  RkTextInput,
-  RkAvoidKeyboard,
-  RkStyleSheet,
-  RkTheme,
-} from 'react-native-ui-kitten';
+
 export default loginStyles = 
 
 MediaQueryStyleSheet.create({

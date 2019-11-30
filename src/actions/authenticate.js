@@ -70,7 +70,7 @@ export const logout =() =>{
   return async dispatch => {
     dispatch(logoutRequest()) // Dispatch a logout request
     try {
-        await AsyncStorage.removeItem(DATA_SESSION); // Remove the session data and unauthenticate the user
+        await AsyncStorage.clear(); // Remove the session data and unauthenticate the user
         dispatch(logoutSuccess()) // Dispatch a logout success action
     } catch (err) { // When something goes wrong
       dispatch(logoutFailed("Something went wrong"))
