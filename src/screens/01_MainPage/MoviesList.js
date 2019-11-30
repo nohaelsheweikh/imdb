@@ -5,7 +5,6 @@ import {
   ScrollView,
   Dimensions,
   Text,
-  TexInput,
 } from 'react-native';
 import Styles, { COLOR } from "../../config/styles";
 import Loader from '../../components/Loader';
@@ -15,27 +14,25 @@ import Orientation from 'react-native-orientation';
 import BackgroundColor from 'react-native-background-color';
 import { withNavigationFocus } from "react-navigation";
 import { Button,Icon,ListItem,Card,Image,Divider} from 'react-native-elements';
-
+import MoviesCard from '../../components/MovieCard'
 
 const { width,height } = Dimensions.get('window');
 
 
 export default class MoviesList extends React.PureComponent {  
 
-    state = {
+  state = {
         search:'',
         movies: []
       
       };
 
-componentWillReceiveProps(nextProps) {
-  if (nextProps.MoviesList !== this.props.MoviesList) {
-    this.setState({
-     movies: nextProps.MoviesList
-    });
-    console.log('new Movies',this.state.movies)
-  }
-}
+  static getDerivedStateFromProps(nextProps, prevState){
+    if(nextProps.MoviesList !== prevState.MoviesList){
+      return {  movies: nextProps.MoviesList};
+    }
+    else return null;
+    }
 
   render = () => {   
       return (
@@ -47,56 +44,17 @@ componentWillReceiveProps(nextProps) {
             :null
         }
         {
-          this.state.movies.map((movie, i) => {
+        this.state.movies.map((movie, i) => {
             return (
-           <Card title={movie.title} key={i}>
-             <View>
-                <View style={{alignItems:'center'}}  >
-                  <Image
-                    resizeMode="cover"
-                    source={{ uri:"https://image.tmdb.org/t/p/w500/"+movie.backdrop_path }}
-                    style={{ width: 200, height: 150 }}
-                  />
-                  </View>
-                  <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text >Release :{movie.release_date}</Text>
-                    <Text> Rating {movie.vote_average}</Text>
-                  </View>  
-                </View>
-                <Divider  />
-              <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                <Button
-                  type="clear"
-                  titleStyle={{color:COLOR.SECONDARY}}
-                  icon={
-                    <Icon
-                      name="share"
-                      size={15}
-                      color={COLOR.SECONDARY}
-                    />
-            }
-            onPress={this.props.share.bind(this,movie.title,"https://image.tmdb.org/t/p/w500/"+movie.backdrop_path)}
-            title="Share"
-          />
-          
-          <Button
-             type="clear"
-             titleStyle={{color:COLOR.SECONDARY}}
+                <MoviesCard
+                  title={movie.title} key={i}
+                  source={{ uri:"https://image.tmdb.org/t/p/w500/"+movie.backdrop_path }}
+                  releaseDate={movie.release_date}
+                  rating={movie.vote_average}
+                  share={this.props.share.bind(this,movie.title,"https://image.tmdb.org/t/p/w500/"+movie.backdrop_path)}
 
-              icon={
-                <Icon
-                  name="star"
-                  size={15}
-                  color={COLOR.SECONDARY}
+                
                 />
-               
-
-              }
-              title="Favorite"
-            />
-          </View>
-          
-            </Card>
               );
             })
         }
