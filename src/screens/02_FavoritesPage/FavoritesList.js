@@ -27,17 +27,14 @@ export default class MoviesList extends React.PureComponent {
         movies: []
       
       };
-      componentWillReceiveProps(nextProps) {
-       
-        if(nextProps.favoriteMovies !== this.props.favoriteMovies){
-  
-           this.setState({
-               movies:nextProps.favoriteMovies,    
-  
-          });
-          console.log('data',nextProps.favoriteMovies)
-        }
-      }
+
+  static getDerivedStateFromProps(nextProps, prevState){
+    if(nextProps.favoriteMovies !== prevState.favoriteMovies){
+          return {   movies:nextProps.favoriteMovies};
+    }
+      else return null;
+    }
+      
   
 
   render = () => {   

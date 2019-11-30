@@ -2,29 +2,14 @@ import React from 'react';
 import { connect} from 'react-redux';
 import {
   View,
-  ScrollView,
-  FlatList,
-  TouchableOpacity,
-  TouchableHighlight,
-  Dimensions,
-  Modal,
   Text,
-  TextInput,
-  Alert,
-  Platform,
-  Image,
   BackHandler,
   RefreshControl,
-  processColor,
-  StatusBar
 } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
 import { Layout } from '../../components';
 import Loader from '../../components/Loader';
-import { scaleModerate, scaleVertical,scale } from '../../utils/scale';
 import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
-import{logout} from '../../actions/authenticate'
 import BackgroundColor from 'react-native-background-color';
 import { withNavigationFocus } from "react-navigation";
 import Share from 'react-native-share';
@@ -34,11 +19,7 @@ import FavoritesList from './FavoritesList'
 import {getFavorites} from '../../actions/getFavorites'
 import favorites from '../../reducers/favorites';
 
-const screenSize = Dimensions.get('window');
-const { width,height } = Dimensions.get('window');
-const size = 120;
-const fontSize = 25;
-const chartBackgroundStyle = { backgroundColor: "#FFFFFF"};
+
  
 
  class FavoriteScreen extends React.PureComponent {  
@@ -67,22 +48,8 @@ const chartBackgroundStyle = { backgroundColor: "#FFFFFF"};
 
   
  componentDidMount() {
-     this.props.getFavorites()
-     var movies
-     AsyncStorage.getItem('MOVIES').then((value) => {
-         
-        movies = JSON.parse(value)  
-        console.log('movies',movies)
-
-      })
-     .then(() => {  
-         this.setState({
-             movies:movies
-         },
-         console.log('state',movies)
-         
-         )
-    })
+  this.props.getFavorites()
+     
   Orientation.lockToPortrait();
   BackgroundColor.setColor('#EAE9EE');
 
@@ -95,8 +62,11 @@ _onRefresh =() =>{
 }
  
   render = () => {
-    
-     
+  if(!this.props.favoriteMovies){
+        return(
+          <Text>No Favorite Movies !</Text>
+        )
+      }
       return (
         <Layout>
           <FavoritesList
@@ -109,7 +79,6 @@ _onRefresh =() =>{
 }}
 
 const mapStateToProps = (state) => {
-  // console.log(state)
   return {
     isLoading:state.favorites.requestingRestore,
     favoriteMovies:state.favorites.favoriteMovies
