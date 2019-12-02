@@ -1,0 +1,6 @@
+framework module Pods_imdbNohaElsheweikh {
+  umbrella header "Pods-imdbNohaElsheweikh-umbrella.h"
+
+  export *
+  module * { export * }
+}
